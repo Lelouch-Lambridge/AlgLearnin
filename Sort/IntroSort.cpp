@@ -38,8 +38,7 @@ int *Partition(int arr[], int low, int high){
 
 int *MedianOfThree(int *a, int *b, int *c){
  if ((*b <= *a && *a < *c) || (*c <= *a && *a < *b)) return (a);
- if ((*a < *b && *b < *c) || (*c <= *b && *b <= *a)){
-  return (b);
+ if ((*a < *b && *b < *c) || (*c <= *b && *b <= *a)) return (b);
  return (c);
 }
 
@@ -47,8 +46,7 @@ void IntrosortUtil(int arr[], int *begin, int *end, int depthLimit){
  int size = end - begin;
 
  if (size < 16){
-  InsertionSort(arr, begin, end);
-  return;
+  return InsertionSort(arr, begin, end);
  }
 
  if (depthLimit == 0){
@@ -67,9 +65,7 @@ void IntrosortUtil(int arr[], int *begin, int *end, int depthLimit){
 
 void Introsort(int arr[], int *begin, int *end){
  int depthLimit = 2 * log(end - begin);
-
- IntrosortUtil(arr, begin, end, depthLimit);
- return;
+ return IntrosortUtil(arr, begin, end, depthLimit);
 }
 
 int main(){
